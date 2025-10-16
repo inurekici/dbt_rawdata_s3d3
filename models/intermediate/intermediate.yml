@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_sales_margin_details
+    description: calculated sales margin
+    columns:
+      - name: orders_id
+        description: id of the orders
+        tests:
+          - unique
+          - not_null
+      - name: total_revenue
+        description: total_revenue - total_purchase_price
+        tests:
+          - not_null
+      - name: total_purchase_cost
+        description: quantity * purchase_cost
+        tests: 
+          - not_null
+        
