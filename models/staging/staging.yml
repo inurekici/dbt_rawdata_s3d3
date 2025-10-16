@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: staging_products
+    description: clean version of products table
+    columns:
+      - name: products_id
+        description: id of the products
+        tests:
+          - not_null
+      - name: purchase_price
+        description: price of the product

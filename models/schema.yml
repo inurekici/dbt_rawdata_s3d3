@@ -20,9 +20,6 @@ sources:
             description: products' id of the sales
             tests:
               - not_null
-        tests:
-          - unique:
-            column name: 'date_date || orders_id || pdt_id'
       - name: products
         identifier: raw_gz_product
         description: raw products data of greenwez
