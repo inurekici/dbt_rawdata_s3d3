@@ -10,3 +10,23 @@ models:
           - not_null
       - name: purchase_price
         description: price of the product
+  - name: staging_shipment
+    description: clean version of shipment table
+    columns:
+      - name: orders_id
+        description: id of the orders
+        tests:
+          - not_null
+          - unique
+      - name: shipping_fee
+        description: the money paid for the shipment --by customer, i guess
+        tests:
+          - not_null
+      - name: log_cost
+        description: logistics cost paid by the seller
+        tests:
+          - not_null
+      - name: ship_cost
+        description: shipment cost paid by the seller
+        tests:
+          - not_null
