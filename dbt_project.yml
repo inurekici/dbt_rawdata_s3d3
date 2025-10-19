@@ -44,3 +44,6 @@ models:
       +materialized: view
     marts:
       +materialized: table
+      finance: 
+        +materialized: table
+        +schema: finance 
