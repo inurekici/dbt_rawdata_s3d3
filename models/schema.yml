@@ -54,7 +54,47 @@ sources:
         tests:
           - unique:
               column_name: orders_id
-            
+      - name: gz_adwords 
+        identifier: raw_gz_adwords
+        description: adwords campaing dataset
+        columns: 
+          - name: date_date
+            description: date of the campaigns
+          - name: paid_source
+            description: the social media platform where the ad is shared
+          - name: campaign_key
+            description: primary key of this table
+            tests:
+              - not_null
+          - name: ads_cost
+            description: the amount of money used for one of the ads
+      - name: gz_bing 
+        identifier: raw_gz_bing
+        description: raw bing campaigns
+        columns:
+          - name: campaign_key
+            description: probably primary key
+            tests:
+              - not_null
+      - name: gz_criteo
+        identifier: raw_gz_criteo
+        description: criteo ads raw dataset
+        columns:
+          - name: campaign_key
+            description: probably primary key
+            tests:
+              - not_null
+      - name: gz_facebook
+        description: facebook campaigns dataset raw
+        identifier: raw_gz_facebook
+        columns:
+          - name: campaign_key
+            description: probably primary key 
+            tests:
+              - not_null
+
+
+
 
             
                   
