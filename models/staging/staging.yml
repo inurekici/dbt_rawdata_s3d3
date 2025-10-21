@@ -30,3 +30,25 @@ models:
         description: shipment cost paid by the seller
         tests:
           - not_null
+  - name: staging_adwords
+    columns:
+      - name: date_date
+        description: dates of the campaigns
+        tests:
+          - not_null
+      - name: pk_key
+        description: primary key
+        tests:
+          - unique
+          - not_null
+  - name: staging_bing
+    columns:
+      - name: date_date
+        description: dates of the campaigns
+        tests:
+          - not_null
+      - name: pk_key
+        description: primary key
+        tests:
+          - unique
+          - not_null
