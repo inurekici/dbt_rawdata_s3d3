@@ -1,0 +1,11 @@
+SELECT *
+FROM {{ref("staging_adwords")}}
+UNION ALL
+SELECT *
+FROM {{ref("staging_bing")}}
+UNION ALL
+SELECT *
+FROM {{ref("staging_criteo")}}
+UNION ALL
+SELECT *
+FROM {{ref("staging_facebook")}}
