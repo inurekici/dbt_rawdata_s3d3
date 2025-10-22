@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: raw_cc
+    identifier: raw_data_circle
+    description: circle raw data
+    tables:
+      - name: parcel
+        description: parcel data raw
+        identifier: raw_cc_parcel
+        columns:
+          - name: Parcel_id
+            tests:
+              - not_null
+          - name: Date_purCHase
+            tests:
+              - not_null
+      - name: parcel_product
+        description: parcel product data
+        identifier: raw_cc_parcel_product
+        columns:
+          - name: ParCEL_id
+            tests:
+              - not_null
+          - name: Model_mAME
+            tests:
+              - not_null
+
+
+    

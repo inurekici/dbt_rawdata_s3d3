@@ -40,6 +40,8 @@ models:
     # Applies to all files under models/staging/
     staging:
       +materialized: view
+    circle_parcel:
+      +schema: parcel_dbt_dev
     intermediate:
       +materialized: view
     marts:
