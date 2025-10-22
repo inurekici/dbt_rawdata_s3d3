@@ -41,7 +41,7 @@ models:
     staging:
       +materialized: view
     circle_parcel:
-      +schema: parcel_dbt_dev
+      schema: 'parcel_dbt_dev'
     intermediate:
       +materialized: view
     marts:
