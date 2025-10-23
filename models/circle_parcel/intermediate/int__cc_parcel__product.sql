@@ -1,8 +1,9 @@
-WITH nb_products_query AS (
+WITH final_query AS (
+    WITH nb_products_query AS (
   SELECT parcel_id,
-  SUM(quantity) as quantity,
+  SUM(quantity) as qty,
   COUNT(DISTINCT(model_name)) as nb_products
-  FROM `dbt_inurekici_parcel_dbt_dev.stg__cc_parcel_product`
+  FROM {{ ref("stg__cc_parcel_product")}}
   GROUP BY parcel_id
 )
   SELECT 
@@ -32,8 +33,30 @@ WITH nb_products_query AS (
   DATE_DIFF(date_delivery,date_purchase,DAY) as delivery_time,
 -- delay?? date_delivery is not null and delivery time > 5
   IF(date_delivery is null, null, IF(DATE_DIFF(date_delivery, date_purchase, DAY) > 5, 1, 0)) as delay,
-  nb.quantity,
+  nb.qty,
   nb.nb_products
-    FROM `galvanized-math-473610-k7.dbt_inurekici_parcel_dbt_dev.stg__cc_parcel` as p
+    FROM {{ ref("stg__cc_parcel")}} as p
     LEFT JOIN nb_products_query as nb
     ON nb.parcel_id = p.parcel_id
+)
+SELECT 
+parcel_id,
+model_name,
+  parcel_tracking,
+  transporter,
+  priority,
+  date_purchase,
+  date_shipping,
+  date_delivery,
+  date_cancelled,
+  status,
+  month_purchase,
+qty,
+expedition_time,
+transport_time,
+delivery_time,
+delay,
+nb_products,
+FROM final_query
+RIGHT JOIN {{ ref("stg__cc_parcel_product")}}
+USING (parcel_id)
