@@ -1,6 +1,6 @@
 WITH nb_products_query AS (
   SELECT parcel_id,
-  SUM(quantity) as quantity,
+  SUM(quantity) as qty,
   COUNT(DISTINCT(model_name)) as nb_products
   FROM {{ref("stg__cc_parcel_product")}}
   GROUP BY parcel_id
@@ -32,7 +32,7 @@ WITH nb_products_query AS (
   DATE_DIFF(date_delivery,date_purchase,DAY) as delivery_time,
 -- delay?? date_delivery is not null and delivery time > 5
   IF(date_delivery is null, null, IF(DATE_DIFF(date_delivery, date_purchase, DAY) > 5, 1, 0)) as delay,
-  nb.quantity,
+  nb.qty,
   nb.nb_products
     FROM {{ref("stg__cc_parcel")}} as p
     LEFT JOIN nb_products_query as nb
